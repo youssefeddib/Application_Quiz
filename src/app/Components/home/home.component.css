@@ -1,2 +1,64 @@
-
+/* Reset and body style */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f0c29;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
   
+  /* Main container */
+  .container {
+    text-align: center;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .logo .quiz {
+    background: linear-gradient(90deg, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .logo .app {
+    background: linear-gradient(90deg, #4a00e0, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Texts */
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #ccc;
+    margin-bottom: 30px;
+  }
+  
+  /* Button */
+  .start-btn {
+    background: linear-gradient(90deg, #7f00ff, #00c6ff);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .start-btn:hover {
+    transform: scale(1.05);
+  }
+   
