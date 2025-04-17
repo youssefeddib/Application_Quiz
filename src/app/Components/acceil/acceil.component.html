@@ -1,1 +1,25 @@
-<p>acceil works!</p>
+<link rel="stylesheet" href="acceil.component.css" />
+<div class="home-container">
+    <div class="logo">
+      <span class="quiz">Quiz</span> <span class="app">app</span>
+    </div>
+  
+    <h2>Choisissez une catégorie</h2>
+  
+    <div class="categories">
+      <div
+        class="category"
+        *ngFor="let cat of categories"
+        [class.selected]="selectedCategoryId === cat.id"
+        (click)="selectCategory(cat.id)"
+      >
+        <img [src]="cat.image" [alt]="cat.name" />
+        <h3>{{ cat.name }}</h3>
+      </div>
+    </div>
+  
+    <div class="start-section">
+      <button class="start-btn" (click)="startQuiz()">Démarrer le quiz</button>
+    </div>
+  </div>
+  
