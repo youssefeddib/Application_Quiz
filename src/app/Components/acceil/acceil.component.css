@@ -1,86 +1,119 @@
+/* Style global */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f0c29;
-    color: white;
-  }
-  
-  .home-container {
-    padding: 100px 20px 40px 120px;
-  }
-  
-  .logo {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .logo .quiz {
-    background: linear-gradient(90deg, #8e2de2, #4a00e0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .logo .app {
-    background: linear-gradient(90deg, #4a00e0, #00c6ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-  }
-  
-  .categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .category {
-    background-color: #1c1a3a;
-    padding: 10px;
-    border-radius: 15px;
-    width: 200px;
-    text-align: center;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  
-  .category.selected {
-    border-color: #00c6ff;
-    transform: scale(1.05);
-  }
-  
-  .category img {
-    width: 100%;
-    height: 120px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .start-section {
-    margin-top: 40px;
-    text-align: center;
-  }
-  
-  .start-btn {
-    background: linear-gradient(90deg, #7f00ff, #00c6ff);
-    color: white;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .start-btn:hover {
-    transform: scale(1.05);
-  }
-  
-  
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f0c29;
+  color: white;
+ 
+}
+
+/* Conteneur principal */
+.home-container {
+  padding: 100px 20px 40px 120px;
+   margin-left: 40px;
+   
+}
+
+/* Logo */
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.logo .quiz {
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo .app {
+  background: linear-gradient(90deg, #4a00e0, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Titre */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Bloc catégories */
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.category {
+  background-color: #1c1a3a;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.category.selected {
+  border-color: #00c6ff;
+  transform: scale(1.05);
+}
+
+.category img {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Bloc de sélection des difficultés */
+.difficulties {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.difficulties .start-btn {
+  background-color: #1c1a3a;
+  border: 2px solid transparent;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s, border-color 0.3s;
+}
+
+.difficulties .start-btn.selected {
+  background: linear-gradient(90deg, #00c6ff, #4a00e0);
+  color: black;
+  font-weight: bold;
+}
+
+/* Bouton Start */
+.start-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.start-btn {
+  background: linear-gradient(90deg, #7f00ff, #00c6ff);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+}

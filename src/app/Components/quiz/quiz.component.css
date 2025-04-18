@@ -1,0 +1,111 @@
+/* Réutilisation du style général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f0c29;
+    color: white;
+  }
+  
+  .home-container {
+    padding: 100px 20px 40px 120px;
+  }
+  
+  .logo {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .logo .quiz {
+    background: linear-gradient(90deg, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .logo .app {
+    background: linear-gradient(90deg, #4a00e0, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Utilisé pour afficher la question */
+  .category {
+    background-color: #1c1a3a;
+    padding: 20px;
+    border-radius: 15px;
+    width: 600px;
+    text-align: left;
+    border: 2px solid #292654;
+    transition: transform 0.2s ease;
+  }
+  
+  .category h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  
+  .option {
+    background-color: #292654;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .option:hover {
+    background-color: #3e3b6d;
+  }
+  
+  .option.selected {
+    background-color: #00c6ff;
+    color: black;
+  }
+  
+  .start-section {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .start-btn {
+    background: linear-gradient(90deg, #7f00ff, #00c6ff);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .start-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .result {
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .result h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .result p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  

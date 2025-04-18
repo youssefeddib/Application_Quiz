@@ -1,25 +1,36 @@
 <link rel="stylesheet" href="acceil.component.css" />
+
 <div class="home-container">
-    <div class="logo">
-      <span class="quiz">Quiz</span> <span class="app">app</span>
-    </div>
-  
-    <h2>Choisissez une catégorie</h2>
-  
-    <div class="categories">
-      <div
-        class="category"
-        *ngFor="let cat of categories"
-        [class.selected]="selectedCategoryId === cat.id"
-        (click)="selectCategory(cat.id)"
-      >
-        <img [src]="cat.image" [alt]="cat.name" />
-        <h3>{{ cat.name }}</h3>
-      </div>
-    </div>
-  
-    <div class="start-section">
-      <button class="start-btn" (click)="startQuiz()">Démarrer le quiz</button>
+  <div class="logo">
+    <span class="quiz">Quiz</span> <span class="app">app</span>
+  </div>
+
+  <h2>Choisissez une catégorie</h2>
+  <div class="categories">
+    <div
+      class="category"
+      *ngFor="let cat of categories"
+      [class.selected]="selectedCategoryId === cat.id"
+      (click)="selectCategory(cat.id)"
+    >
+      <img [src]="cat.image" [alt]="cat.name" />
+      <h3>{{ cat.name }}</h3>
     </div>
   </div>
-  
+
+  <h2>Sélectionnez la difficulté</h2>
+  <div class="difficulties">
+    <button
+      *ngFor="let level of difficulties"
+      class="start-btn"
+      [class.selected]="level === selectedDifficulty"
+      (click)="selectedDifficulty = level"
+    >
+      {{ level }}
+    </button>
+  </div>
+
+  <div class="start-section">
+    <button class="start-btn" (click)="startQuiz()">Démarrer le quiz</button>
+  </div>
+</div>

@@ -1,1 +1,35 @@
-<p>quiz works!</p>
+<link rel="stylesheet" href="quiz.component.css" />
+<div class="home-container">
+    <div class="logo">
+      <span class="quiz">Quiz</span> <span class="app">app</span>
+    </div>
+  
+    <div *ngIf="!showResult">
+      <h2>Question {{ currentQuestionIndex + 1 }} / {{ questions.length }}</h2>
+  
+      <div class="categories">
+        <div class="category selected">
+          <h3>{{ questions[currentQuestionIndex].question }}</h3>
+          <div *ngFor="let option of questions[currentQuestionIndex].options" 
+               (click)="selectOption(option)"
+               [class.selected]="selectedOption === option"
+               class="option">
+            {{ option }}
+          </div>
+        </div>
+      </div>
+  
+      <div class="start-section">
+        <button class="start-btn" (click)="nextQuestion()" [disabled]="!selectedOption">
+          {{ currentQuestionIndex + 1 === questions.length ? 'Terminer' : 'Suivant' }}
+        </button>
+      </div>
+    </div>
+  
+    <div *ngIf="showResult" class="result">
+      <h2>Résultat 🎉</h2>
+      <p>Score : {{ score }} / {{ questions.length }}</p>
+      <button class="start-btn" (click)="restartQuiz()">Recommencer</button>
+    </div>
+  </div>
+  
