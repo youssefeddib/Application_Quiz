@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 interface Question {
   question: string;
@@ -14,53 +15,49 @@ interface Question {
 })
 export class QuizComponent implements OnInit {
   categoryId: string = '';
+  difficulty: string = '';
   currentQuestionIndex: number = 0;
   questions: Question[] = [];
   selectedOption: string | null = null;
   showResult: boolean = false;
   score: number = 0;
+  isLoading: boolean = true;
 
-  allQuestions: { [key: string]: Question[] } = {
-    science: [
-      {
-        question: 'Quelle planète est la plus proche du soleil ?',
-        options: ['Terre', 'Mars', 'Mercure', 'Vénus'],
-        correctAnswer: 'Mercure'
-      },
-      {
-        question: 'Quel est l’élément chimique du symbole "O" ?',
-        options: ['Or', 'Oxygène', 'Osmium', 'Ozone'],
-        correctAnswer: 'Oxygène'
-      }
-    ],
-    history: [
-      {
-        question: 'Qui a découvert l’Amérique ?',
-        options: ['Napoléon', 'Christophe Colomb', 'Jules César', 'Galilée'],
-        correctAnswer: 'Christophe Colomb'
-      }
-    ],
-    sports: [
-      {
-        question: 'Combien de joueurs dans une équipe de football ?',
-        options: ['9', '10', '11', '12'],
-        correctAnswer: '11'
-      }
-    ],
-    math: [
-      {
-        question: 'Combien font 8 x 7 ?',
-        options: ['54', '56', '64', '58'],
-        correctAnswer: '56'
-      }
-    ]
-  };
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.categoryId = this.route.snapshot.paramMap.get('id') || '';
-    this.questions = this.allQuestions[this.categoryId] || [];
+    this.categoryId = this.route.snapshot.paramMap.get('category') || '';
+    this.difficulty = this.route.snapshot.paramMap.get('difficulty') || 'easy';
+
+    const apiUrl = `https://opentdb.com/api.php?amount=10&category=${this.categoryId}&difficulty=${this.difficulty}&type=multiple`;
+
+    this.http.get<any>(apiUrl).subscribe(
+      (res) => {
+        if (res.response_code === 0) {
+          this.questions = res.results.map((q: any) => ({
+            question: this.decodeHTML(q.question),
+            correctAnswer: this.decodeHTML(q.correct_answer),
+            options: this.shuffleOptions([
+              ...q.incorrect_answers.map((a: string) => this.decodeHTML(a)),
+              this.decodeHTML(q.correct_answer)
+            ])
+          }));
+        } else {
+          alert('Aucune question disponible pour cette catégorie/difficulté.');
+          this.router.navigate(['/categories']);
+        }
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Erreur de chargement des questions', error);
+        alert('Erreur lors du chargement des questions.');
+        this.router.navigate(['/categories']);
+      }
+    );
   }
 
   selectOption(option: string) {
@@ -68,7 +65,8 @@ export class QuizComponent implements OnInit {
   }
 
   nextQuestion() {
-    if (this.selectedOption === this.questions[this.currentQuestionIndex].correctAnswer) {
+    const current = this.questions[this.currentQuestionIndex];
+    if (this.selectedOption === current.correctAnswer) {
       this.score++;
     }
     this.selectedOption = null;
@@ -84,5 +82,15 @@ export class QuizComponent implements OnInit {
     this.selectedOption = null;
     this.score = 0;
     this.showResult = false;
+  }
+
+  shuffleOptions(options: string[]): string[] {
+    return options.sort(() => Math.random() - 0.5);
+  }
+
+  decodeHTML(html: string): string {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
   }
 }

@@ -9,6 +9,7 @@ body {
   
   .home-container {
     padding: 100px 20px 40px 120px;
+    margin-left: 40px;
   }
   
   .logo {
